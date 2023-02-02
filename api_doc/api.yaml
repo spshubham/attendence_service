@@ -1,0 +1,291 @@
+openapi: 3.0.3
+info:
+  title: news and weather
+  description: |-
+    This is a sample service
+  version: 1.0.0
+
+servers:
+  - url: http://127.0.0.1:8181
+
+
+paths:
+  /v1/student/signup:
+    post:
+      tags:
+        - Student
+      summary: Create Student
+      description: Register a student.
+      operationId: createUser
+      requestBody:
+        description: Created user object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+
+      responses:
+        "200":
+            description: successful operation
+            content:
+              application/json:
+                examples:
+                  user registered successfully:
+                    value:
+                      message: User Registered Successfully
+        "400":
+          description: Bad Request - see `message` field for additional information
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequestResponse"
+        "403":
+          description: Unauthorized 
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequestResponse"        
+  /v1/subject/register:
+    post:
+      tags:
+        - Subject
+      summary: Create subject
+      description: Register a subject.
+      operationId: subjectRegister
+      requestBody:
+        description: Created subject
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+
+      responses:
+        "200":
+            description: successful operation
+            content:
+              application/json:
+                examples:
+                  user registered successfully:
+                    value:
+                      message: User Registered Successfully
+        "400":
+          description: Bad Request - see `message` field for additional information
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequestResponse"
+        "403":
+          description: Unauthorized 
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequestResponse"        
+  /v1/attendence/register:
+    post:
+      tags:
+        - Attendence
+      summary: Attendence
+      description: Attendence  register.
+      operationId: attendecetRegister
+      parameters:
+        - name: student_id
+          in: query
+          description: student id
+          required: true
+          schema:
+            type: string
+        - name: subject_id
+          in: query
+          description: subject id
+          required: true
+          schema:
+            type: string    
+
+
+      responses:
+        "200":
+            description: successful operation
+            content:
+              application/json:
+                examples:
+                  user registered successfully:
+                    value:
+                      message: User Registered Successfully
+        "400":
+          description: Bad Request - see `message` field for additional information
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequestResponse"
+        "403":
+          description: Unauthorized 
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequestResponse"        
+
+  /v1/attendence/track:
+    get:
+      tags:
+        - Attendence
+      summary: Track attendence
+      description: Attendence track
+      operationId: loginUser
+      parameters:
+        - name: student_id
+          in: query
+          description: The email for login
+          required: false
+          schema:
+            type: string
+
+      responses:
+        '200':
+          description: successful operation
+
+          content:
+            application/json:
+              schema:
+                 $ref: '#/components/schemas/login'
+        '400':
+          description: Invalid username/password supplied
+        "403":
+          description: Unauthorized 
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequestResponse"  
+  /v1/attendence/month:
+    get:
+      tags:
+        - Attendence
+      summary: Attendence by month
+      description: Put month number
+      operationId: month
+      parameters:
+        - name: month
+          in: query
+          description: Put month number
+          required: false
+          schema:
+            type: string
+
+      responses:
+        '200':
+          description: successful operation
+
+          content:
+            application/json:
+              schema:
+                 $ref: '#/components/schemas/login'
+        '400':
+          description: Invalid username/password supplied
+        "403":
+          description: Unauthorized 
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequestResponse"  
+  /v1/attendence/threshhold:
+    get:
+      tags:
+        - Attendence
+      summary: Attendence threshold
+      description: Put month number
+      operationId: threshhold
+      parameters:
+        - name: month
+          in: query
+          description: Put month number
+          required: false
+          schema:
+            type: string
+
+      responses:
+        '200':
+          description: successful operation
+
+          content:
+            application/json:
+              schema:
+                 $ref: '#/components/schemas/login'
+        '400':
+          description: Invalid username/password supplied
+        "403":
+          description: Unauthorized 
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequestResponse"  
+
+components:
+  parameters:
+   AccessToken:
+      name: "x-access-token"
+      in: header
+      description: Access Token.
+      required: true
+      schema:
+        type: string
+  schemas:
+
+    User:
+      type: object
+      properties:
+
+        name:
+          type: string
+          example: theUser
+        email:
+          type: string
+          example: john@email.com
+        password:
+          type: string
+          example: '12345'
+        city:
+          type: string
+          example: 'Sangli'  
+        age:
+          type: number
+          example: 12  
+
+
+    login:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "login successful"
+        toke:
+          type: string
+          example: "as3sdsdjlkd9s"
+    BadRequestResponse:
+      type: object
+      properties:
+        message:
+          type: string
+      example:
+        message: Invalid request body.
+      
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        type:
+          type: string
+        message:
+          type: string
+
+  requestBodies:
+    UserArray:
+      description: List of user object
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/User'
+
+   

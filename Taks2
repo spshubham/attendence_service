@@ -1,0 +1,24 @@
+1.
+Divide 25 bulls into group of 5 bulls
+Groups can be like (Group A: A1--A5,Group B: B1--B5,Group C: C1--C5,Group D: D1--D5,Group E: E1--E5)
+
+2.
+Conduct a race in each group to know the speed of bulls in each group. This require 5
+races. Let's consider A1, B1, C1, D1, and E1 toppers of those 5 races.
+
+3.
+We make a group of 5 these bulls (A1, B1, C1, D1, E1 ) and conduct a race among them. 
+The winner of this race is the fastest bull overall. So after 6 races, we know the fastest bull. 
+Assume the result is A1 > B1 > C1 > D1 > E1. 
+
+4.
+Now for the 2nd position: B1 and A2 will be the potential candidates. Similarly, for the 3rd position: A2, B1, C1, B2, and A3 are potential candidates. 
+Overall, for the 2nd and 3rd positions: A2, B1, C1, B2, and A3 are the potential candidates.
+B1 and A2 may be second or third
+C1 or B2 OR A3 may be third
+
+5.
+In the group of these 5 bulls, the winner would be the 2nd fastest, and the bulls that comes 2nd in the race would be the 3rd fastest!
+
+
+We need 7 races to decide fastes bulls from 25 bulls
