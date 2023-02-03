@@ -14,12 +14,3 @@ module.exports.signUp = function signUp (req, res, next, body) {
 
 
 
-module.exports.getDetails = function getDetails (req, res, next, email, password, ) {
-  User.getDetails(email, password)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};

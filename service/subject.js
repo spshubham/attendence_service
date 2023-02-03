@@ -13,11 +13,7 @@ const conf = require("../conf/conf")
  */
 exports.register = async function (body) {
   try {
-    // let valid = validate.isValidRegisterUserBody(body);
-    // if (!valid.isValid) {
-    //   throw valid.payload;
-    // }
-    
+
     const user = await Subjectdb.create(body);
 
     return user

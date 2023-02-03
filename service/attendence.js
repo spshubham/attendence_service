@@ -15,16 +15,7 @@ const conf = require("../conf/conf")
  */
 exports.register = async function (student_id, subject_id) {
   try {console.log(student_id);
-    // if (body) {
-    //   if (!body.url_name || !body.frequency) {
-    //     throw Response.InvalidReqBody;
-    //   }
-    //   let valid = validate.validateURLReq(body);
-    //   if (!valid.isValid) {
-    //     throw valid.payload;
-    //   }
 
-    // }
     const url = await AttendenceDb.create(student_id, subject_id);
     return url
   } catch (error) {
@@ -36,16 +27,7 @@ exports.register = async function (student_id, subject_id) {
 
 exports.track = async function (student_id) {
   try {console.log(student_id);
-    // if (body) {
-    //   if (!body.url_name || !body.frequency) {
-    //     throw Response.InvalidReqBody;
-    //   }
-    //   let valid = validate.validateURLReq(body);
-    //   if (!valid.isValid) {
-    //     throw valid.payload;
-    //   }
 
-    // }
     const url = await AttendenceDb.track(student_id);
     return url
   } catch (error) {
@@ -57,16 +39,7 @@ exports.track = async function (student_id) {
 
 exports.month = async function (month) {
   try {console.log(month);
-    // if (body) {
-    //   if (!body.url_name || !body.frequency) {
-    //     throw Response.InvalidReqBody;
-    //   }
-    //   let valid = validate.validateURLReq(body);
-    //   if (!valid.isValid) {
-    //     throw valid.payload;
-    //   }
 
-    // }
     const url = await AttendenceDb.month(month);
     return url
   } catch (error) {
@@ -78,16 +51,7 @@ exports.month = async function (month) {
 
 exports.threshhold = async function (month) {
   try {console.log(month);
-    // if (body) {
-    //   if (!body.url_name || !body.frequency) {
-    //     throw Response.InvalidReqBody;
-    //   }
-    //   let valid = validate.validateURLReq(body);
-    //   if (!valid.isValid) {
-    //     throw valid.payload;
-    //   }
 
-    // }
     const url = await AttendenceDb.threshhold(month);
     return url
   } catch (error) {
@@ -96,7 +60,6 @@ exports.threshhold = async function (month) {
     else throw Response.UnexpectedError;
   }
 };
-// /**
 //  * 
 //  * @param {*} body 
 //  * @param {*} user_id 
