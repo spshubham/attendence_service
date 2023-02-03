@@ -1,9 +1,8 @@
 "use strict";
 var Response = require("../utils/response");
-const validate = require("../utils/validation")
+
 const Subjectdb = require("../db/subject.db")
-const jwt = require('jsonwebtoken');
-const conf = require("../conf/conf")
+
 
 
 /**
